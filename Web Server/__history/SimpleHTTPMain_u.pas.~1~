@@ -1,0 +1,36 @@
+unit SimpleHTTPMain_u;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Sockets, StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    memoOutput: TMemo;
+    btnStart: TButton;
+    btnStop: TButton;
+    btnExit: TButton;
+    tcpsrvrServer: TTcpServer;
+    procedure btnStartClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+procedure TForm1.btnStartClick(Sender: TObject);
+begin
+  tcpsrvrServer.Open;
+  memoOutput.Lines.Add(DateTimeToStr(Now) + ': server started');
+end;
+
+end.
